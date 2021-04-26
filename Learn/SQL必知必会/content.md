@@ -1,14 +1,14 @@
 ### 1：了解SQL
 
-数据库是保存有组织的数据的容器；数据库表是某种特定类型数据的结构化清单；表由列组成，列是表中的一个字段，所有的表都是由一个或多个列组成；表中的数据是行存储的。
+数据库是保存有组织的数据的容器；数据库表是某种特定类型数据的结构化清单；表由列组成，列是表中的一个字段，所有的表都是由一个或多个列组成；表中的数据是行存储的
 
-SQL是结构化查询语句（Structured query language）的缩写，使用SQL语句来与DBMS打交道，这里用的DBMS是关系型数据库MySQL，数据库可视操作工具使用Sequel Pro，下载网址 https://sequelpro.com/test-builds。
+SQL是结构化查询语句（Structured query language）的缩写，使用SQL语句来与DBMS打交道，这里用的DBMS是关系型数据库MySQL，数据库可视操作工具使用Sequel Pro，下载网址 https://sequelpro.com/test-builds
 
 --- 
 
 ### 2：检索数据
 
-SQL语句的最佳实践，SQL关键字比如SELECT等使用大写，对表名和列名使用小写。
+SQL语句的最佳实践，SQL关键字比如SELECT等使用大写，对表名和列名使用小写
 
 ```sql
 # 选中所有的行
@@ -25,7 +25,7 @@ SELECT prod_name FROM Products LIMIT 5 OFFSET 5;
 
 ### 3：排序检索数据
 
-在使用ORDER BY子句时，应该保证其是SELECT语句的最后一句，否则可能会出错。
+在使用ORDER BY子句时，应该保证其是SELECT语句的最后一句，否则可能会出错
 
 ```sql
 # 按照多列排序
