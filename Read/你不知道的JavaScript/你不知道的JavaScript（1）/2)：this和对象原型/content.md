@@ -2,7 +2,7 @@
 
 - this提供了一种较显式传递上下文对象更为优雅的方式来隐式传递一个对象引用
 
-- 一个直接例子 this既不指向函数自身也不指向函数的词法作用域
+一个直接例子 this既不指向函数自身也不指向函数的词法作用域
 ```javascript
 function foo() {
   var a = 2;
@@ -33,7 +33,7 @@ baz(); // 当前调用栈是：baz 当前调用位置是全局作用域
 
 - this的绑定规则
 
-this是在运行时绑定，它的上下文取决于函数调用时的各种条件，this的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式。this的绑定规则有四种
+this是在运行时绑定，它的上下文取决于函数调用时的各种条件，this的绑定和函数声明的位置没有任何关系，只取决于函数的调用位置。如下所示，this的绑定规则有四种
 
 1. 默认绑定，绑定到全局作用域
 ```javascript
@@ -62,7 +62,7 @@ function foo() {
   console.log(this.a);
 }
 function doFoo(fn) {
-  fn(); // <-- 调用位置！
+  fn(); // this的指向取决于函数的调用位置
 }
 var obj = {
   a: 2,
@@ -81,7 +81,7 @@ var obj = {
 }
 var a = '2';
 obj.foo(); // 2
-setTimeout(obj.foo,100); // '2',严格模式或node环境下打印undefined
+setTimeout(obj.foo, 100); // '2',严格模式或node环境下打印undefined
 ```
 
 3. 显式绑定，使用call或apply指定this的绑定对象
@@ -118,7 +118,7 @@ var b = bar(3); // 2 3
 console.log(b);// 5
 ```
 
-4. new绑定 实际上并不存在构造函数 只有函数的构造调用
+4. new绑定 实际上并不存在构造函数 只有函数的构造调用 new
 ```javascript
 /** 使用new来发生构造函数调用时
   1、创建一个全新的对象
@@ -232,7 +232,7 @@ if (!Function.prototype.softBind) {
         curried.concat.apply(curried, arguments)
       );
     };
-    bound.prototype = Object.create(fn.prototype);
+    bound.prototype = Object.create(fn.prototype); // 修正原型链
     return bound;
   }
 }
